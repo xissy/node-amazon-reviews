@@ -3,7 +3,9 @@
   * Page
     * ReviewsIframePage
     * AllCustomerReviewsPage
-    * ReviewPage
+    * ReviewMobilePage
+    * ReviewDesktopPage
+  * Review
 
 Refer to [Amazon Product Advertising API](https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html), customer reviews are not proveded directly. Instead of that, the API provides an url to redirect IFrame page which has customer reviews about an item.
 
