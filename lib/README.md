@@ -10,7 +10,7 @@ Refer to [Amazon Product Advertising API](https://affiliate-program.amazon.com/g
 
 ## Basic flow
   1. Get an `IFrame page url` from Amazon Product Advertising API
-  1. Find `All Customer Reviews Page` url & load it
+  1. Find `All Customer Reviews Page url` and load it
   1. Find ID array of the reviews on the page
     1. Load the `Review page` and crawl it
   1. Find `Next page url`
