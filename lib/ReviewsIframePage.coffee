@@ -7,7 +7,7 @@ class ReviewsIframePage extends Page
     linkTags = @$('.small a')
     return null  if linkTags.length is 0
     
-    @$('.small a')['0'].attribs.href
+    @$('.small a').eq(0).attr 'href'
 
 
 

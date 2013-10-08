@@ -9,15 +9,16 @@ class AllCustomerReviewsPage extends Page
     parsedUrl = urlModule.parse @options.url
     path = parsedUrl.pathname
     path.split('/')[3]
-    
+
 
   #### get next page url from the all customer reviews page document.
   getNextPageUrl: ->
     pageLinkTags = @$('.paging a')
+    nextTag = pageLinkTags.eq(pageLinkTags.length - 1)
     nextText = pageLinkTags.eq(pageLinkTags.length - 1).text()
 
     if nextText is 'Next ›'
-      nextUrl = pageLinkTags["#{pageLinkTags.length - 1}"].attribs.href
+      nextUrl = nextTag.attr 'href'
     else
       nextUrl = null
 
@@ -29,10 +30,10 @@ class AllCustomerReviewsPage extends Page
     reviewLinkTags = @$('#productReviews a')
 
     reviewIds = []
-    for reviewLinkTag in reviewLinkTags.toArray()
+    reviewLinkTags.each (index, element) ->
       # there should be `name` attribute but no `style` attribute.
-      if reviewLinkTag?.attribs?.name? and not reviewLinkTag?.attribs?.style?
-        reviewIds.push reviewLinkTag?.attribs?.name
+      if @?.attr('name')? and not @?attr('style')?
+        reviewIds.push @?.attr('name')
 
     reviewIds
 
