@@ -1,7 +1,15 @@
 Page = require './Page'
+urlModule = require 'url'
 
 
 class AllCustomerReviewsPage extends Page
+
+  #### get the product id.
+  getProductId: ->
+    parsedUrl = urlModule.parse @options.url
+    path = parsedUrl.pathname
+    path.split('/')[3]
+    
 
   #### get next page url from the all customer reviews page document.
   getNextPageUrl: ->

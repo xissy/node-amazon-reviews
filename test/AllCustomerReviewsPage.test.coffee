@@ -12,10 +12,14 @@ describe 'AllCustomerReviewsPage', ->
         should.not.exist err
         should.exist $
 
+        productId = allCustomerReviewsPage.getProductId()
+        should.exist productId
+        productId.should.equal 'B00DFFT76U'
+
         nextPageUrl = allCustomerReviewsPage.getNextPageUrl()
         should.exist nextPageUrl
 
         reviewIds = allCustomerReviewsPage.getReviewIds()
-        (reviewIds.length > 10).should.be.true
+        (reviewIds.length >= 10).should.be.true
 
         done()
