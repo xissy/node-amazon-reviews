@@ -20,6 +20,6 @@ describe 'AllCustomerReviewsPage', ->
         should.exist nextPageUrl
 
         reviewIds = allCustomerReviewsPage.getReviewIds()
-        (reviewIds.length >= 10).should.be.true
+        reviewIds.should.length 10
 
         done()

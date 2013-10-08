@@ -32,7 +32,7 @@ class AllCustomerReviewsPage extends Page
     reviewIds = []
     reviewLinkTags.each (index, element) ->
       # there should be `name` attribute but no `style` attribute.
-      if @?.attr('name')? and not @?attr('style')?
+      if @?.attr('name')? and not @?.attr('style')?
         reviewIds.push @?.attr('name')
 
     reviewIds
