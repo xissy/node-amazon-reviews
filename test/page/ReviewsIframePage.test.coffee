@@ -1,6 +1,6 @@
 should = require 'should'
 
-ReviewsIframePage = require '../lib/ReviewsIframePage'
+ReviewsIframePage = require '../../lib/page/ReviewsIframePage'
 
 
 describe 'ReviewsIframePage', ->

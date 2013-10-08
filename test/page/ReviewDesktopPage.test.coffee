@@ -1,6 +1,6 @@
 should = require 'should'
 
-ReviewDesktopPage = require '../lib/ReviewDesktopPage'
+ReviewDesktopPage = require '../../lib/page/ReviewDesktopPage'
 
 
 describe 'ReviewDesktopPage', ->

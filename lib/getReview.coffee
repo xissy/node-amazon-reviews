@@ -1,5 +1,5 @@
-ReviewMobilePage = require './ReviewMobilePage'
-ReviewDesktopPage = require './ReviewDesktopPage'
+ReviewMobilePage = require './page/ReviewMobilePage'
+ReviewDesktopPage = require './page/ReviewDesktopPage'
 
 
 #### retrieve a review by productId and reviewId.

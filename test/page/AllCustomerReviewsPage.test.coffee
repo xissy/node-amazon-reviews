@@ -1,6 +1,6 @@
 should = require 'should'
 
-AllCustomerReviewsPage = require '../lib/AllCustomerReviewsPage'
+AllCustomerReviewsPage = require '../../lib/page/AllCustomerReviewsPage'
 
 
 describe 'AllCustomerReviewsPage', ->

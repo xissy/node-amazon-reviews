@@ -1,6 +1,6 @@
 async = require 'async'
 
-AllCustomerReviewsPage = require './AllCustomerReviewsPage'
+AllCustomerReviewsPage = require './page/AllCustomerReviewsPage'
 
 
 #### retrieve review IDs by a productId.

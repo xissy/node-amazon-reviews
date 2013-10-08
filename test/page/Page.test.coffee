@@ -1,6 +1,6 @@
 should = require 'should'
 
-Page = require '../lib/Page'
+Page = require '../../lib/page/Page'
 
 
 describe 'Page', ->
