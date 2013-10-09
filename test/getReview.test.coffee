@@ -16,6 +16,8 @@ describe 'getReview()', ->
           review.title.should.equal 'Swaddlers vs Cruisers Size 4'
           review.starCount.should.equal 5
           should.exist review.descText
-          review.profileName.should.equal 'Rebecca N'
+          should.exist review.profile
+          review.profile.name.should.equal 'Rebecca N'
+          review.profile.id.should.equal 'A276OI0NHBYORX'
 
           done()

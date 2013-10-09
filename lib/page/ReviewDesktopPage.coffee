@@ -8,8 +8,12 @@ class ReviewDesktopPage extends Page
     result = {}
     
     authorInfoTag = @$('.crAuthorInfo')
-    result.profileName = authorInfoTag.find('a').eq(0)?.text()
-    result.profileUrl = authorInfoTag.find('a').eq(0)?.attr 'href'
+    profileTag = authorInfoTag.find('a').eq(0)
+    if profileTag?
+      result.profile =
+        name: profileTag?.text()
+        url: profileTag?.attr 'href'
+        id: profileTag?.attr('href')?.split('/')?[4]
 
     result
 
