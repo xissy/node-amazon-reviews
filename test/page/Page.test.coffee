@@ -17,4 +17,4 @@ describe 'Page', ->
     it 'should be `no url.` error', (done) ->
       page = new Page {}, (err, $) ->
         should.exist err
-        done()      
+        done()
