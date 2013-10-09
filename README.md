@@ -10,7 +10,7 @@ Via [npm](https://npmjs.org):
     $ npm install amazon-reviews
 
 
-## Usages
+## Usage
 
 ### Load in the module
 ```javascript
