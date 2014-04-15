@@ -1,6 +1,6 @@
 {
   "name": "amazon-reviews",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A node.js module to crawl product reviews from Amazon.",
   "main": "index.js",
   "dependencies": {
