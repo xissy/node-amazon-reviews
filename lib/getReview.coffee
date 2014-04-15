@@ -9,15 +9,19 @@ module.exports = (options, callback) ->
 
   options.url = "http://www.amazon.com/gp/aw/review/#{options.productId}/#{options.reviewId}"
 
-  reviewMobilePage = new ReviewMobilePage options, (err) ->
+  reviewMobilePage = new ReviewMobilePage options, (err, $) ->
     return callback err  if err?
+
+    reviewMobilePage.$ = $
 
     review = reviewMobilePage.parse()
 
     options.url = "http://www.amazon.com/review/#{options.reviewId}"
 
-    reviewDesktopPage = new ReviewDesktopPage options, (err) ->
+    reviewDesktopPage = new ReviewDesktopPage options, (err, $) ->
       return callback err  if err?
+
+      reviewDesktopPage.$ = $
 
       for k, v of reviewDesktopPage.parse()
         review[k] = v

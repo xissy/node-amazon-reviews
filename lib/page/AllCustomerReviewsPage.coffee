@@ -25,6 +25,20 @@ class AllCustomerReviewsPage extends Page
     nextUrl
 
 
+  #### get last page number from the all customer reviews page document.
+  getLastPageNo: ->
+    pageLinkTags = @$('.paging a')
+    lastTag = pageLinkTags.eq(pageLinkTags.length - 2)
+    lastText = pageLinkTags.eq(pageLinkTags.length - 2).text()
+
+    if lastText isnt ''
+      lastPageNo = parseInt lastText
+    else 
+      lastPageNo = 1
+
+    lastPageNo
+
+
   #### get review id array.
   getReviewIds: ->
     reviewLinkTags = @$('#productReviews a')

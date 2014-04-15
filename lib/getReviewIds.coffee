@@ -12,27 +12,36 @@ module.exports = (options, callback) ->
   isLastPage = false
   currentUrl = "http://www.amazon.com/product-reviews/#{options.productId}/ref=cm_cr_pr_top_recent?ie=UTF8&showViewpoints=0&sortBy=bySubmissionDateDescending"
 
-  async.until ->
-    isLastPage
+  allCustomerReviewsPage = new AllCustomerReviewsPage
+    url: currentUrl
   ,
-    (callback) ->
-      allCustomerReviewsPage = new AllCustomerReviewsPage
-        url: currentUrl
+    (err, $) ->
+      return callback err  if err?
+
+      allCustomerReviewsPage.$ = $
+      reviewIds = reviewIds.concat allCustomerReviewsPage.getReviewIds()
+      nextPageUrl = allCustomerReviewsPage.getNextPageUrl()
+      lastPageNo = allCustomerReviewsPage.getLastPageNo()
+
+      return callback null, reviewIds  if lastPageNo <= 1
+
+      reviewPageNos = [ 2..lastPageNo ]
+
+      async.forEachLimit reviewPageNos, 100
+      ,
+        (reviewPageNo, callback) ->
+          allCustomerReviewsPage = new AllCustomerReviewsPage
+            url: nextPageUrl.replace /pageNumber=[\d]*/g, "pageNumber=#{reviewPageNo}"
+          ,
+            (err, $) ->
+              return callback err  if err?
+
+              allCustomerReviewsPage.$ = $
+              reviewIds = reviewIds.concat allCustomerReviewsPage.getReviewIds()
+              
+              callback null
       ,
         (err) ->
           return callback err  if err?
 
-          reviewIds = reviewIds.concat allCustomerReviewsPage.getReviewIds()
-          nextPageUrl = allCustomerReviewsPage.getNextPageUrl()
-
-          if nextPageUrl?
-            currentUrl = nextPageUrl
-          else
-            isLastPage = true
-
-          callback null
-  ,
-    (err) ->
-      return callback err  if err?
-
-      callback null, reviewIds
+          callback null, reviewIds
