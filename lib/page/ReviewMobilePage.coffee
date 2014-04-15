@@ -6,15 +6,15 @@ class ReviewMobilePage extends Page
     return new Error 'the page is not loaded.'  if not @$?
 
     result = {}
-    result.title = @$('#reviews-list h4').text().replace /\n/g, ''
+    result.title = @$('#reviews-list h4')?.text()?.replace /\n/g, ''
     result.starCount = @$('.a-icon-star-full').length
     
-    dateText = @$('span.a-color-secondary').eq(0).text().split('-')[1].replace /\n/g, ''
+    dateText = @$('span.a-color-secondary')?.eq(0)?.text()?.split('-')?[1]?.replace /\n/g, ''
     result.createdAt = new Date dateText
     
     # replace all br tags to new lines.
     descTag = @$('.a-spacing-micro')
-    descTag.find('br').replaceWith '\n'
+    descTag?.find('br')?.replaceWith '\n'
     result.descText = @$('.a-spacing-micro').text()
 
     result.helpfulCount = Number @$('.votes-helpful').text()
